@@ -1,0 +1,183 @@
+* {
+  color: #555;
+  font: 12px/1.25 Tahoma, Arial, sans-serif;
+  background-color: #fff;
+}
+
+a {
+  color: #2c86a7;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #F2761E;
+  border-bottom: 1px dotted #F2761E;
+}
+
+em {
+  background-color: #FFECCF;
+  padding: 0 0.2em;
+}
+
+code {
+  font-family: monospace;
+}
+
+code em {
+  font-family: monospace;
+}
+
+.hidden {
+  display: none;
+}
+
+#header, #content, #footer {
+  margin: auto;
+  padding: 1em 8%;
+  clear: both;
+}
+
+#header {
+  padding-top: 0;
+}
+
+#content {
+  padding-bottom: 2em;
+
+  border-top: 1px solid #ccc;
+  background: #fff url(gfx/bg-content-footer.png) repeat-x;
+}
+
+#footer {
+  padding-top: 1.25em;
+  padding-bottom: 1.25em;
+  overflow: auto;
+  height: 100%;
+
+  font-size: 12px;
+  border-top: 1px solid #ccc;
+  background: #fff url(gfx/bg-content-footer.png) repeat-x;
+}
+
+h1 {
+  margin: 1em 0 0.25em 0;
+  float: left;
+
+  font-size: 28px;
+  font-weight: bold;
+}
+
+h2 {
+  clear: both;
+  margin: 1em 0 0.5em 0;
+
+  font-size: 18px;
+  border-bottom: 1px dotted black;
+}
+
+h3 {
+  margin: 1em 0 0.5em 0;
+
+  font-size: 18px;
+}
+
+#header ul {
+  float: right;
+  margin-top: 2.25em;
+  padding-top: 0.5em;
+  width: 374px;
+  height: 38px;
+
+  background: #fff url(gfx/bg-top-menu.png) no-repeat;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#header ul li {
+  display: inline;
+  margin: 0.5em;
+}
+
+#header ul li a {
+  color: #f3fafd;
+}
+
+#header ul li a:hover {
+  color: #fff;
+  border-bottom: 1px dotted #fff;
+}
+
+p {
+  margin: 0.25em 0;
+}
+
+p#introduction {
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background: #f6aa30 url(gfx/bg-introduction.png) bottom repeat-x;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+p#introduction a {
+  color: #fff;
+}
+
+p#introduction a:hover {
+  border-bottom: 1px dotted #fff;
+}
+
+.section {
+  margin-bottom: 1.0em;
+}
+
+.section ul {
+  margin-left: 1em;
+
+  list-style-type: disc;
+}
+
+.section ul li {
+  padding-left: 0.25em;
+
+  color: #F2781F;
+}
+
+.section ul li span {
+  color: #555;
+}
+
+table.examples {
+  width: 420px;
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 60px;
+}
+
+table.examples td {
+  width: 60px;
+  height: 60px;
+  background-color: #EFEFEF;
+
+}
+
+table.examples .center {
+  background-color: transparent;
+}
+
+.usage code {
+  display: block;
+
+  font-size: 12px;
+  margin: 0.5em 0;
+  white-space: pre;
+  background-color: #efefef;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+

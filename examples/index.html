@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+<head>
+  <title>TipTipX</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="javascript, library, jquery, plugin, tooltip" />
+  <meta name="description" content="A jQuery plugin which allows to display tooltips." />
+
+  <link href='reset.css' rel='stylesheet' type='text/css' />
+  <link href='style.css' rel='stylesheet' type='text/css' />
+   <!--[if IE]>
+    <link href='style-ie.css' rel='stylesheet' type='text/css' />
+  <![endif]-->
+  <link href='jquery.tipTipX.css' rel='stylesheet' type='text/css' />
+
+  <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="jquery.tipTipX.js"></script>
+
+  <script type='text/javascript'>
+    //<![CDATA[
+    jQuery(function() {
+      jQuery().tipTipDefaults({ delay : 0 });
+
+      jQuery(".examples.fixed .left_top").tipTip({ position : 'left_top', activation : 'click' });
+      jQuery(".examples.fixed .top").tipTip({ position : 'top' });
+      jQuery(".examples.fixed .right_top").tipTip({ position : 'right_top', suffix : 'right_top' });
+      jQuery(".examples.fixed .left").tipTip({ position : 'left', suffix : 'left' });
+      jQuery(".examples.fixed .right").tipTip({ position : 'right', suffix : 'right' });
+      jQuery(".examples.fixed .left_bottom").tipTip({ position : 'left_bottom', suffix : 'left_bottom' });
+      jQuery(".examples.fixed .bottom").tipTip({ position : 'bottom', suffix : 'bottom' });
+      jQuery(".examples.fixed .right_bottom").tipTip({ position : 'right_bottom', suffix : 'right_bottom' });
+
+      jQuery(".examples.dynamic .left_top").tipTip({ defaultPosition : 'left_top' });
+      jQuery(".examples.dynamic .top").tipTip({ defaultPosition : 'top' });
+      jQuery(".examples.dynamic .right_top").tipTip({ defaultPosition : 'right_top' });
+      jQuery(".examples.dynamic .left").tipTip({ defaultPosition : 'left' });
+      jQuery(".examples.dynamic .right").tipTip({ defaultPosition : 'right' });
+      jQuery(".examples.dynamic .left_bottom").tipTip({ defaultPosition : 'left_bottom' });
+      jQuery(".examples.dynamic .bottom").tipTip({ defaultPosition : 'bottom' });
+      jQuery(".examples.dynamic .right_bottom").tipTip({ defaultPosition : 'right_bottom' });
+    });
+    //]]>
+  </script>
+</head>
+<body>
+  <div id='header'>
+    <h1><img src='gfx/logo-tiptipx.png' alt='TipTipX logo' title='TipTipX' /></h1>
+
+    <ul>
+      <li><a href='jquery.tipTipX-0.1.0.zip'>Download</a></li>
+      <li><a href=''>GitHub</a></li>
+    </ul>
+  </div>
+
+  <div id='content'>
+    <p id='introduction'>TipTipX is a <a href='http://jquery.com/'>jQuery</a> plugin based on Drew Wilson's <a href='http://code.drewwilson.com/entry/tiptip-jquery-plugin'>TipTip</a> which provides the ability to show CSS-styled tooltips. TipTipX provides extended functionality and somewhat improved tooltip positioning alghoritm.</p>
+
+    <a name='features'></a>
+    <h2>Features</h2>
+    <div class='section features'>
+      <ul>
+        <li><span>smart tooltip positioning</span></li>
+        <li><span>shows tooltips on hover, focus, click or triggered by javascript code</span></li>
+        <li><span>custom event hooks</span></li>
+        <li><span>works with Firefox 2/3, Opera 9, IE 6/7/8, Safari 3</span></li>
+        <li><span>open source (dual licensed under MIT and GPL licenses)</span></li>
+      </ul>
+    </div>
+
+    <a name='examples'></a>
+    <h2>Examples</h2>
+
+    <h3><a href='#' onclick="$('#dynamic').toggle()">Dynamic positioning</a></h3>
+
+    <div id='dynamic' class='hidden'>
+      <p>Hover over the boxes to see tooltips. Resize your browser's window so that tooltips would not fit and hover again.</p>
+
+      <table class="examples dynamic">
+        <tr>
+          <td class='left_top' title='Top-left'></td>
+          <td class='top' title='Top'></td>
+          <td class='right_top' title='Top-right'></td>
+        </tr>
+        <tr>
+          <td class='left' title='Left'></td>
+          <td class='center'></td>
+          <td class='right' title='Right'></td>
+        </tr>
+        <tr>
+          <td class='left_bottom' title='Bottom-left'></td>
+          <td class='bottom' title='Bottom'></td>
+          <td class='right_bottom' title='Bottom-right'></td>
+        </tr>
+      </table>
+    </div>
+
+    <h3><a href='#' onclick="$('#fixed').toggle()">Static positioning</a></h3>
+
+    <div id='fixed' class='hidden'>
+      <p>Resize your browser's window to see how tooltips reposition themselves.
+
+      <table class="examples fixed">
+        <tr>
+          <td class='left_top' title='Top-left'></td>
+          <td class='top' title='Top'></td>
+          <td class='right_top' title='Top-right'></td>
+        </tr>
+        <tr>
+          <td class='left' title='Left'></td>
+          <td class='center'></td>
+          <td class='right' title='Right'></td>
+        </tr>
+        <tr>
+          <td class='left_bottom' title='Bottom-left'></td>
+          <td class='bottom' title='Bottom'></td>
+          <td class='right_bottom' title='Bottom-right'></td>
+        </tr>
+      </table>
+    </div>
+
+    <a name='usage'></a>
+    <h2>Usage</h2>
+    <div class='section usage'>
+
+      <h3>Setup...</h3>
+      <code>
+    &lt;script type="text/javascript" src="jquery.1.4.2.min.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="jquery.tipTipX.js"&gt;&lt;/script&gt;
+      </code>
+
+      <h3>Shown on hover on all elements with title attribute...</h3>
+      <code>
+    jQuery(function() { jQuery("[title]").tipTip(); });
+      </code>
+
+      <h3>Shown on focus...</h3>
+      <code>
+    jQuery(function() { jQuery(selector).tipTip({ activation : "focus" }); });
+      </code>
+
+      <h3>Shown with javascript code...</h3>
+      <code>
+    jQuery("#some_element").tipTipNow("#some_element's description");
+      </code>
+
+      <h3>Hide...</h3>
+      <code>
+    jQuery("#some_element").tipTipClose();
+      </code>
+
+      <h3>Change default options...</h3>
+      <code>
+    jQuery().tipTipDefaults({ delay : 0 });
+      </code>
+    </div>
+
+    <h2>Available options</h2>
+    <div class='section available-options'>
+      <ul>
+        <li>
+          <code>suffix</code>
+          <span class='type'>string</span>
+        </li>
+        <li>
+          <code>activation</code>
+          <span class='type'>string</span>
+          event type, one of <code>'hover'</code>, <code>'focus'</code> or <code>'click'</code>
+        </li>
+        <li>
+          <code>keepAlive</code>
+          <span class='type'>boolean</span>
+        </li>
+        <li>
+          <code>maxWidth</code>
+          <span class='type'>number</span>
+        </li>
+        <li>
+          <code>edgeOffset</code>
+          <span class='type'>number</span>
+        </li>
+        <li>
+          <code>defaultPosition</code>
+          <span class='type'>string</span>
+        </li>
+        <li>
+          <code>position</code>
+          <span class='type'>string</span>
+          forces tooltip position
+        </li>
+        <li>
+          <code>fadeIn</code>
+          <span class='type'>number</span>
+        </li>
+        <li>
+          <code>fadeOut</code>
+          <span class='type'>number</span>
+        </li>
+        <li>
+          <code>attribute</code>
+          <span class='type'>string</span>
+        </li>
+        <li>
+          <code>content</code>
+          <span class='type'>string</span>
+        </li>
+        <li>
+          <code>delay</code>
+          <span class='type'>number</span>
+        </li>
+        <li>
+          <code>enter</code>
+          <span class='type'>function</span>
+        </li>
+        <li>
+          <code>exit</code>
+          <span class='type'>function</span>
+        </li>
+      </ul>
+    </div>
+
+    <a name='known-issues'></a>
+    <h2>Known issues</h2>
+    <div class='section known-issues'>
+      Dynamic tooltip positioning does not work perfectly in all cases, but it is good enough for my uses. Anyways, patches are welcome.
+    </div>
+
+    <a name='bugs'></a>
+    <h2>Reporting bugs</h2>
+    <div class='section bugs'>
+      Please, report bugs at the <a href="">project page</a> on ghithub.
+    </div>
+  </div>
+
+  <div id='footer'>
+    <p>Copyright 2010 Tomasz Szymczyszyn</p>
+  </div>
+
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    try {
+      var pageTracker = _gat._getTracker("UA-1910453-4");
+      pageTracker._trackPageview();
+      } catch(err) {}
+  </script>
+
+</body>
+</html>
