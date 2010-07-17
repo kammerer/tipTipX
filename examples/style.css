@@ -151,26 +151,9 @@ p#introduction a:hover {
   color: #555;
 }
 
-table.examples {
-  width: 420px;
-  margin: auto;
-  border-collapse: separate;
-  border-spacing: 60px;
-}
-
-table.examples td {
-  width: 60px;
-  height: 60px;
-  background-color: #EFEFEF;
-
-}
-
-table.examples .center {
-  background-color: transparent;
-}
-
 .usage code {
   display: block;
+  clear: both;
 
   font-size: 12px;
   margin: 0.5em 0;
@@ -181,3 +164,23 @@ table.examples .center {
   border-radius: 5px;
 }
 
+.example {
+  background-color: #FFE2CF;
+  padding: 0.5em;
+  margin-right: 0.25em;
+  float: left;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#example3-show, #example3-hide {
+  display: inline-block;
+  padding: 0.75em 0 0 0;
+  margin: 0 0.5em;
+}
+
+.available-options code {
+  font-weight: bold;
+  font-size: 130%;
+}

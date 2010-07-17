@@ -22,23 +22,21 @@
     jQuery(function() {
       jQuery().tipTipDefaults({ delay : 0 });
 
-      jQuery(".examples.fixed .left_top").tipTip({ position : 'left_top', activation : 'click' });
-      jQuery(".examples.fixed .top").tipTip({ position : 'top' });
-      jQuery(".examples.fixed .right_top").tipTip({ position : 'right_top', suffix : 'right_top' });
-      jQuery(".examples.fixed .left").tipTip({ position : 'left', suffix : 'left' });
-      jQuery(".examples.fixed .right").tipTip({ position : 'right', suffix : 'right' });
-      jQuery(".examples.fixed .left_bottom").tipTip({ position : 'left_bottom', suffix : 'left_bottom' });
-      jQuery(".examples.fixed .bottom").tipTip({ position : 'bottom', suffix : 'bottom' });
-      jQuery(".examples.fixed .right_bottom").tipTip({ position : 'right_bottom', suffix : 'right_bottom' });
+      jQuery('#example1').tipTip();
+      jQuery('#example2').tipTip({ activation : 'click' });
 
-      jQuery(".examples.dynamic .left_top").tipTip({ defaultPosition : 'left_top' });
-      jQuery(".examples.dynamic .top").tipTip({ defaultPosition : 'top' });
-      jQuery(".examples.dynamic .right_top").tipTip({ defaultPosition : 'right_top' });
-      jQuery(".examples.dynamic .left").tipTip({ defaultPosition : 'left' });
-      jQuery(".examples.dynamic .right").tipTip({ defaultPosition : 'right' });
-      jQuery(".examples.dynamic .left_bottom").tipTip({ defaultPosition : 'left_bottom' });
-      jQuery(".examples.dynamic .bottom").tipTip({ defaultPosition : 'bottom' });
-      jQuery(".examples.dynamic .right_bottom").tipTip({ defaultPosition : 'right_bottom' });
+      jQuery('#example3-show').click(function() {
+        jQuery('#example3').tipTipNow("Tooltip!", { position : 'top' });
+      });
+
+      jQuery('#example3-hide').click(function() {
+        jQuery('#example3').tipTipClear();
+      });
+
+      jQuery('#example4-1').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-1' }); });
+      jQuery('#example4-2').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-2' }); });
+      jQuery('#example4-3').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-3' }); });
+      jQuery('#example4-4').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-4' }); });
     });
     //]]>
   </script>
@@ -68,88 +66,62 @@
       </ul>
     </div>
 
-    <a name='examples'></a>
-    <h2>Examples</h2>
-
-    <h3><a href='#' onclick="$('#dynamic').toggle()">Dynamic positioning</a></h3>
-
-    <div id='dynamic' class='hidden'>
-      <p>Hover over the boxes to see tooltips. Resize your browser's window so that tooltips would not fit and hover again.</p>
-
-      <table class="examples dynamic">
-        <tr>
-          <td class='left_top' title='Top-left'></td>
-          <td class='top' title='Top'></td>
-          <td class='right_top' title='Top-right'></td>
-        </tr>
-        <tr>
-          <td class='left' title='Left'></td>
-          <td class='center'></td>
-          <td class='right' title='Right'></td>
-        </tr>
-        <tr>
-          <td class='left_bottom' title='Bottom-left'></td>
-          <td class='bottom' title='Bottom'></td>
-          <td class='right_bottom' title='Bottom-right'></td>
-        </tr>
-      </table>
-    </div>
-
-    <h3><a href='#' onclick="$('#fixed').toggle()">Static positioning</a></h3>
-
-    <div id='fixed' class='hidden'>
-      <p>Resize your browser's window to see how tooltips reposition themselves.
-
-      <table class="examples fixed">
-        <tr>
-          <td class='left_top' title='Top-left'></td>
-          <td class='top' title='Top'></td>
-          <td class='right_top' title='Top-right'></td>
-        </tr>
-        <tr>
-          <td class='left' title='Left'></td>
-          <td class='center'></td>
-          <td class='right' title='Right'></td>
-        </tr>
-        <tr>
-          <td class='left_bottom' title='Bottom-left'></td>
-          <td class='bottom' title='Bottom'></td>
-          <td class='right_bottom' title='Bottom-right'></td>
-        </tr>
-      </table>
-    </div>
-
     <a name='usage'></a>
-    <h2>Usage</h2>
+    <h2>Examples and usage</h2>
     <div class='section usage'>
 
-      <h3>Setup...</h3>
+      <h3>Setup</h3>
       <code>
     &lt;script type="text/javascript" src="jquery.1.4.2.min.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" src="jquery.tipTipX.js"&gt;&lt;/script&gt;
+
+    &lt;link rel='stylesheet' type="text/css" href="jquery.tipTipX.css" /&gt;
       </code>
 
-      <h3>Shown on hover on all elements with title attribute...</h3>
+      <h3>Tooltip with default options</h3>
+      <p id='example1' class='example' title='Tooltip!'>Hover over me</p>
+      <code>
+    jQuery('#example1').tipTip();
+      </code>
+
+      <h3>Triggered by clicking</h3>
+      <p id='example2' class='example' title='Tooltip!'>Click me</p>
+      <code>
+    jQuery('#example2').tipTip({ activation : 'click' });
+      </code>
+
+      <h3>Triggered by javascript, fixed position</h3>
+      <p id='example3' class='example' title='Tooltip!'>Lorem ipsum</p>
+      <a id='example3-show' href='#' onclick='return false'>Show</a>
+      <a id='example3-hide' href='#' onclick='return false'>Hide</a>
+      <code>
+    jQuery('#example3-show').click(function() {
+      jQuery('#example3').tipTipNow("Tooltip!", { position : 'top' });
+    });
+
+    jQuery('#example3-hide').click(function() {
+      jQuery('#example3').tipTipClear();
+    });
+      </code>
+
+      <h3>Multiple tooltips shown at once</h3>
+      <p id='example4-1' class='example'>Click me</p>
+      <p id='example4-2' class='example'>Click me</p>
+      <p id='example4-3' class='example'>Click me</p>
+      <p id='example4-4' class='example'>Click me</p>
+      <code>
+    jQuery('#example4-1').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-1' }); });
+    jQuery('#example4-2').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-2' }); });
+    jQuery('#example4-3').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-3' }); });
+    jQuery('#example4-4').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-4' }); });
+      </code>
+
+      <h3>Typical usage</h3>
       <code>
     jQuery(function() { jQuery("[title]").tipTip(); });
       </code>
 
-      <h3>Shown on focus...</h3>
-      <code>
-    jQuery(function() { jQuery(selector).tipTip({ activation : "focus" }); });
-      </code>
-
-      <h3>Shown with javascript code...</h3>
-      <code>
-    jQuery("#some_element").tipTipNow("#some_element's description");
-      </code>
-
-      <h3>Hide...</h3>
-      <code>
-    jQuery("#some_element").tipTipClose();
-      </code>
-
-      <h3>Change default options...</h3>
+      <h3>Changing defaults</h3>
       <code>
     jQuery().tipTipDefaults({ delay : 0 });
       </code>
@@ -161,60 +133,73 @@
         <li>
           <code>suffix</code>
           <span class='type'>string</span>
+          <span>- by default only one tooltip can be shown at once, setting this option allows to show independent tooltips at the same time</span>
         </li>
         <li>
           <code>activation</code>
           <span class='type'>string</span>
-          event type, one of <code>'hover'</code>, <code>'focus'</code> or <code>'click'</code>
+          <span>- type of event which triggers the tooltip, one of <code>'hover'</code>, <code>'focus'</code> or <code>'click'</code> (<code>'hover'</code>
+          by default)</span>
         </li>
         <li>
           <code>keepAlive</code>
           <span class='type'>boolean</span>
+          <span>- if set to true tooltip will not fade out unless you hover over it and then hover off of it (<code>false</code> by default)</span>
         </li>
         <li>
           <code>maxWidth</code>
           <span class='type'>number</span>
+          <span>- maximal tooltip width (<code>'600px'</code> by default)</span>
         </li>
         <li>
           <code>edgeOffset</code>
           <span class='type'>number</span>
+          <span>- distance of tooltip from the element it is shown for (<code>8</code> by default)</span>
         </li>
         <li>
           <code>defaultPosition</code>
           <span class='type'>string</span>
+          <span>- sets default position, one of <code>'top'</code>, <code>'bottom'</code>, <code>'left'</code> or <code>'right'</code> (<code>'bottom'</code> by default)</span>
         </li>
         <li>
           <code>position</code>
           <span class='type'>string</span>
-          forces tooltip position
+          <span>- forces tooltip position</span>
         </li>
         <li>
           <code>fadeIn</code>
           <span class='type'>number</span>
+          <span>- animation time in milliseconds (<code>200</code> by default)</span>
         </li>
         <li>
           <code>fadeOut</code>
           <span class='type'>number</span>
+          <span>- animation time in milliseconds (<code>200</code> by default)</span>
         </li>
         <li>
           <code>attribute</code>
           <span class='type'>string</span>
+          <span>- attribute which holds tooltip content (<code>'title'</code> by default)</span>
         </li>
         <li>
           <code>content</code>
           <span class='type'>string</span>
+          <span>- sets tooltip content explicitly</span>
         </li>
         <li>
           <code>delay</code>
           <span class='type'>number</span>
+          <span>- delay before tooltip is shown after hovering over an element (<code>400</code> by default)</span>
         </li>
         <li>
           <code>enter</code>
           <span class='type'>function</span>
+          <span>- callback triggered when hovering over an element</span>
         </li>
         <li>
           <code>exit</code>
           <span class='type'>function</span>
+          <span>- callback triggered when hovering off an element</span>
         </li>
       </ul>
     </div>
