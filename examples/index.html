@@ -4,8 +4,8 @@
   <title>TipTipX</title>
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="keywords" content="javascript, library, jquery, plugin, tooltip" />
-  <meta name="description" content="A jQuery plugin which allows to display tooltips." />
+  <meta name="keywords" content="javascript, library, jquery, plugin, tooltip, tiptip" />
+  <meta name="description" content="A jQuery plugin which allows to display nice tooltips." />
 
   <link href='reset.css' rel='stylesheet' type='text/css' />
   <link href='style.css' rel='stylesheet' type='text/css' />
@@ -26,17 +26,17 @@
       jQuery('#example2').tipTip({ activation : 'click' });
 
       jQuery('#example3-show').click(function() {
-        jQuery('#example3').tipTipNow("Tooltip!", { position : 'top' });
+        jQuery('#example3').tipTipNow({ position : 'top' });
       });
 
       jQuery('#example3-hide').click(function() {
         jQuery('#example3').tipTipClear();
       });
 
-      jQuery('#example4-1').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-1' }); });
-      jQuery('#example4-2').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-2' }); });
-      jQuery('#example4-3').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-3' }); });
-      jQuery('#example4-4').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-4' }); });
+      jQuery('#example4-1').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-1' }); });
+      jQuery('#example4-2').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-2' }); });
+      jQuery('#example4-3').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-3' }); });
+      jQuery('#example4-4').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-4' }); });
     });
     //]]>
   </script>
@@ -47,12 +47,12 @@
 
     <ul>
       <li><a href='jquery.tipTipX-0.1.0.zip'>Download</a></li>
-      <li><a href=''>GitHub</a></li>
+      <li><a href='http://github.com/kammerer/tipTipX'>GitHub</a></li>
     </ul>
   </div>
 
   <div id='content'>
-    <p id='introduction'>TipTipX is a <a href='http://jquery.com/'>jQuery</a> plugin based on Drew Wilson's <a href='http://code.drewwilson.com/entry/tiptip-jquery-plugin'>TipTip</a> which provides the ability to show CSS-styled tooltips. TipTipX provides extended functionality and somewhat improved tooltip positioning alghoritm.</p>
+    <p id='introduction'>TipTipX is a <a href='http://jquery.com/'>jQuery</a> plugin based on Drew Wilson's <a href='http://code.drewwilson.com/entry/tiptip-jquery-plugin'>TipTip</a> which provides the ability to show CSS-styled tooltips. TipTipX provides extended functionality and somewhat improved tooltip positioning algorithm.</p>
 
     <a name='features'></a>
     <h2>Features</h2>
@@ -96,7 +96,7 @@
       <a id='example3-hide' href='#' onclick='return false'>Hide</a>
       <code>
     jQuery('#example3-show').click(function() {
-      jQuery('#example3').tipTipNow("Tooltip!", { position : 'top' });
+      jQuery('#example3').tipTipNow({ position : 'top' });
     });
 
     jQuery('#example3-hide').click(function() {
@@ -110,10 +110,10 @@
       <p id='example4-3' class='example'>Click me</p>
       <p id='example4-4' class='example'>Click me</p>
       <code>
-    jQuery('#example4-1').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-1' }); });
-    jQuery('#example4-2').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-2' }); });
-    jQuery('#example4-3').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-3' }); });
-    jQuery('#example4-4').click(function() { jQuery(this).tipTipNow("Tooltip!", { suffix : '4-4' }); });
+    jQuery('#example4-1').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-1' }); });
+    jQuery('#example4-2').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-2' }); });
+    jQuery('#example4-3').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-3' }); });
+    jQuery('#example4-4').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-4' }); });
       </code>
 
       <h3>Typical usage</h3>
@@ -213,7 +213,7 @@
     <a name='bugs'></a>
     <h2>Reporting bugs</h2>
     <div class='section bugs'>
-      Please, report bugs at the <a href="">project page</a> on ghithub.
+      Please, report bugs at the <a href="http://github.com/kammerer/tipTipX">project page</a> on GitHub.
     </div>
   </div>
 
@@ -227,7 +227,7 @@
   </script>
   <script type="text/javascript">
     try {
-      var pageTracker = _gat._getTracker("UA-1910453-4");
+      var pageTracker = _gat._getTracker("");
       pageTracker._trackPageview();
       } catch(err) {}
   </script>
