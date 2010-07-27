@@ -2,5 +2,4 @@
 
 TipTipX is a jQuery plugin derived from "TipTip":http://code.drewwilson.com/entry/tiptip-jquery-plugin. TipTipX offers extended functionality, such as showing tooltips on demand, which was not possible with TipTip.
 
-Development of the plugin is still in progress.
-
+See "examples page":http://kammerer.boo.pl/code/tipTipX for more details.
