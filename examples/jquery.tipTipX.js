@@ -1,22 +1,15 @@
  /*
- * TipTip
+ * TipTipX 1.0
+ * Copyright 2010 Tomasz Szymczyszyn
+ *
+ * Based on TipTip
  * Copyright 2010 Drew Wilson
  * www.drewwilson.com
  * code.drewwilson.com/entry/tiptip-jquery-plugin
  *
- * Version 1.3   -   Updated: Mar. 23, 2010
- *
- * This Plug-In will create a custom tooltip to replace the default
- * browser tooltip. It is extremely lightweight and very smart in
- * that it detects the edges of the browser window and will make sure
- * the tooltip stays within the current window size. As a result the
- * tooltip will adjust itself to be displayed above, below, to the left 
- * or to the right depending on what is necessary to stay within the
- * browser window. It is completely customizable as well via CSS.
- *
- * This TipTip jQuery plug-in is dual licensed under the MIT and GPL licenses:
- *   http://www.opensource.org/licenses/mit-license.php
- *   http://www.gnu.org/licenses/gpl.html
+ * This plug-in is dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
  */
 
 (function($){
@@ -24,23 +17,23 @@
 	 	this.opts = $.extend({}, TipTipX.defaults, options);
     this.elements = elements;
   
-    var suffix = this.opts.suffix;
+    var tag = this.opts.tag;
 
 	 	// Setup tip tip elements and render them to the DOM
-	 	if ($("#tiptip_holder-" + suffix).length <= 0) {
-	 		this.tiptip_holder = $('<div class="tiptip_holder" id="tiptip_holder-' + suffix + '" style="max-width:'+ this.opts.maxWidth +';"></div>');
-			this.tiptip_content = $('<div class="tiptip_content" id="tiptip_content-' + suffix + '"></div>');
-			this.tiptip_arrow = $('<div class="tiptip_arrow" id="tiptip_arrow-' + suffix + '"></div>');
-			$("body").append(this.tiptip_holder.html(this.tiptip_content).prepend(this.tiptip_arrow.html('<div class="tiptip_arrow_inner" id="tiptip_arrow_inner-' + suffix + '"></div>')));
+	 	if ($("#tiptip_holder-" + tag).length <= 0) {
+	 		this.tiptip_holder = $('<div class="tiptip_holder" id="tiptip_holder-' + tag + '" style="max-width:'+ this.opts.maxWidth +';"></div>');
+			this.tiptip_content = $('<div class="tiptip_content" id="tiptip_content-' + tag + '"></div>');
+			this.tiptip_arrow = $('<div class="tiptip_arrow" id="tiptip_arrow-' + tag + '"></div>');
+			$("body").append(this.tiptip_holder.html(this.tiptip_content).prepend(this.tiptip_arrow.html('<div class="tiptip_arrow_inner" id="tiptip_arrow_inner-' + tag + '"></div>')));
 		} else {
-			this.tiptip_holder = $("#tiptip_holder-" + suffix);
-			this.tiptip_content = $("#tiptip_content-" + suffix);
-			this.tiptip_arrow = $("#tiptip_arrow-" + suffix);
+			this.tiptip_holder = $("#tiptip_holder-" + tag);
+			this.tiptip_content = $("#tiptip_content-" + tag);
+			this.tiptip_arrow = $("#tiptip_arrow-" + tag);
 		};
   };
 
   TipTipX.defaults = {
-      suffix: "default",
+      tag: "default",
 			activation: "hover",
 			keepAlive: false,
 			maxWidth: "600px",
@@ -55,13 +48,18 @@
 		  exit: function(){}
   };
 
-  TipTipX.prototype.showNow = function(title) {
+  TipTipX.prototype.showNow = function() {
     var that = this;
     var activate_all = function() {
       $(that.elements).each(function() {
   			var org_elem = $(this);
-        var timeout = false;
-        that.activate_tiptip(org_elem, title, timeout);
+        if(that.opts.content){
+          var org_title = that.opts.content;
+        } else {
+          var org_title = org_elem.attr(that.opts.attribute);
+        };
+
+        that.activate_tiptip(org_elem, org_title);
       });
     };
 
@@ -75,8 +73,8 @@
     var that = this;
 		$(this.elements).each(function() {
 			var org_elem = $(this);
-      var timeout = false;
-      that.deactivate_tiptip(timeout);
+      that.timeout = false;
+      that.deactivate_tiptip();
     });
 
     $(window).unbind("resize", this.tiptip_holder.data("resize-handler"));
@@ -97,39 +95,39 @@
 					org_elem.removeAttr(that.opts.attribute); //remove original Attribute
 				}
 
-				var timeout = false;
+				that.timeout = false;
 
 				if(that.opts.activation == "hover"){
 					org_elem.hover(function(){
-						that.activate_tiptip(org_elem, org_title, timeout);
+						that.activate_tiptip(org_elem, org_title);
 					}, function(){
 						if(!that.opts.keepAlive){
-							that.deactivate_tiptip(timeout);
+							that.deactivate_tiptip();
 						}
 					});
 					if(that.opts.keepAlive){
 						tiptip_holder.hover(function(){}, function(){
-							that.deactivate_tiptip(timeout);
+							that.deactivate_tiptip();
 						});
 					}
 				} else if(that.opts.activation == "focus"){
 					org_elem.focus(function(){
-						that.activate_tiptip(org_elem, org_title, timeout);
+						that.activate_tiptip(org_elem, org_title);
 					}).blur(function(){
-            that.deactivate_tiptip(timeout);
+            that.deactivate_tiptip();
 					});
 				} else if(that.opts.activation == "click"){
 					org_elem.click(function(){
-						that.activate_tiptip(org_elem, org_title, timeout);
+						that.activate_tiptip(org_elem, org_title);
 						return false;
 					}).hover(function(){},function(){
 						if(!that.opts.keepAlive){
-							that.deactivate_tiptip(timeout);
+							that.deactivate_tiptip();
 						}
 					});
 					if(that.opts.keepAlive){
 						tiptip_holder.hover(function(){}, function(){
-							that.deactivate_tiptip(timeout);
+							that.deactivate_tiptip();
 						});
 					}
 				}
@@ -197,8 +195,7 @@
     this.position_at_bottom(true);
   };
 
-  /* @private */
-  TipTipX.prototype.activate_tiptip = function(org_elem, org_title, timeout) {
+  TipTipX.prototype.activate_tiptip = function(org_elem, org_title) {
     this.tiptip_content.html(org_title);
     this.tiptip_holder.hide().css("margin","0");
     this.remove_position_classes();
@@ -285,17 +282,19 @@
     this.tiptip_arrow.css({"margin-left": this.arrow_left+"px", "margin-top": this.arrow_top+"px"});
     this.tiptip_holder.css({"margin-left": this.marg_left+"px", "margin-top": this.marg_top+"px"}).addClass("tip"+this.t_class);
 
-    if (timeout){ clearTimeout(timeout); }
+    if (this.timeout){ clearTimeout(this.timeout); }
 
     var that = this;
-    timeout = setTimeout(function(){ that.tiptip_holder.stop(true,true).fadeIn(that.opts.fadeIn); }, that.opts.delay);	
+    this.timeout = setTimeout(function(){ that.tiptip_holder.stop(true,true).fadeIn(that.opts.fadeIn); }, that.opts.delay);	
   };
 
-  /* @private */
-  TipTipX.prototype.deactivate_tiptip = function(timeout) {
-    this.opts.exit.call(this, this.tiptip_content);
-    if (timeout){ clearTimeout(timeout); }
-    this.tiptip_holder.fadeOut(this.opts.fadeOut);
+  TipTipX.prototype.deactivate_tiptip = function() {
+    var that = this;
+    setTimeout(function() {
+      that.opts.exit.call(that, that.tiptip_content);
+      if (that.timeout){ clearTimeout(that.timeout); }
+      that.tiptip_holder.fadeOut(that.opts.fadeOut);
+    }, 0);
   };
 
 	$.fn.tipTip = function(options) {
@@ -303,8 +302,8 @@
 	  return this; 	
 	};
 
-  $.fn.tipTipNow = function(content, options) {
-    (new TipTipX(this, options)).showNow(content);
+  $.fn.tipTipNow = function(options) {
+    (new TipTipX(this, options)).showNow();
     return this;
   };
 

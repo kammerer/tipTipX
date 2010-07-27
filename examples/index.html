@@ -33,10 +33,10 @@
         jQuery('#example3').tipTipClear();
       });
 
-      jQuery('#example4-1').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-1' }); });
-      jQuery('#example4-2').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-2' }); });
-      jQuery('#example4-3').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-3' }); });
-      jQuery('#example4-4').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-4' }); });
+      jQuery('#example4-1').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", tag : '4-1' }); });
+      jQuery('#example4-2').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", tag : '4-2' }); });
+      jQuery('#example4-3').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", tag : '4-3' }); });
+      jQuery('#example4-4').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", tag : '4-4' }); });
     });
     //]]>
   </script>
@@ -61,7 +61,7 @@
         <li><span>smart tooltip positioning</span></li>
         <li><span>shows tooltips on hover, focus, click or triggered by javascript code</span></li>
         <li><span>custom event hooks</span></li>
-        <li><span>works with Firefox 2/3, Opera 9, IE 6/7/8, Safari 3</span></li>
+        <li><span>tested with Firefox 2/3, Opera 10, IE 7/8, Safari 4/5</span></li>
         <li><span>open source (dual licensed under MIT and GPL licenses)</span></li>
       </ul>
     </div>
@@ -110,10 +110,10 @@
       <p id='example4-3' class='example'>Click me</p>
       <p id='example4-4' class='example'>Click me</p>
       <code>
-    jQuery('#example4-1').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-1' }); });
-    jQuery('#example4-2').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-2' }); });
-    jQuery('#example4-3').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-3' }); });
-    jQuery('#example4-4').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", suffix : '4-4' }); });
+    jQuery('#example4-1').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", tag : '4-1' }); });
+    jQuery('#example4-2').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", tag : '4-2' }); });
+    jQuery('#example4-3').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", tag : '4-3' }); });
+    jQuery('#example4-4').click(function() { jQuery(this).tipTipNow({ content : "Tooltip!", tag : '4-4' }); });
       </code>
 
       <h3>Typical usage</h3>
@@ -131,7 +131,7 @@
     <div class='section available-options'>
       <ul>
         <li>
-          <code>suffix</code>
+          <code>tag</code>
           <span class='type'>string</span>
           <span>- by default only one tooltip can be shown at once, setting this option allows to show independent tooltips at the same time</span>
         </li>
